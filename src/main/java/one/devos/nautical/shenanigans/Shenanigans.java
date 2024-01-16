@@ -13,6 +13,7 @@ public class Shenanigans implements ModInitializer {
 
 	@Override
 	public void onInitialize(ModContainer mod) {
+		Crab.initCrab();
 	}
 
 	public static ResourceLocation id(String path) {
