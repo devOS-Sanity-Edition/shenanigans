@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "quilt_loader": {
+    "group": "one.devos.nautical",
+    "id": "shenanigans",
+    "version": "${version}",
+    "metadata": {
+      "name": "Shenanigans",
+      "description": "Assorted fixes, patches, and tweaks for the DevOS Minecraft seasons.",
+      "contributors": {
+        "devOS: Sanity Edition, Team Nautical": "Owner"
+      },
+      "contact": {
+        "issues": "https://github.com/devOS-Sanity-Edition/shenanigans/issues",
+        "sources": "https://github.com/devOS-Sanity-Edition/shenanigans"
+      },
+      "icon": "assets/shenanigans/icon.png"
+    },
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "entrypoints": {
+      "init": "one.devos.nautical.shenanigans.Shenanigans"
+    },
+    "depends": [
+      {
+        "id": "quilt_loader",
+        "versions": ">=${loader_version}"
+      },
+      {
+        "id": "quilted_fabric_api",
+        "versions": ">=${qfapi_version}"
+      },
+      {
+        "id": "minecraft",
+        "versions": ">=${minecraft_version}"
+      }
+    ]
+  },
+  "mixin": "shenanigans.mixins.json"
+}
