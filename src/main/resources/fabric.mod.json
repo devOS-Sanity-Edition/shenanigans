@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "shenanigans",
   "version": "${version}",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Shenanigans",
+  "description": "Assorted fixes, patches, and tweaks for the DevOS Minecraft seasons.",
   "authors": [
-    "Tropheus Jay"
+    "devOS: Sanity Edition, Team Nautical"
   ],
   "contact": {
-    "sources": "https://github.com/TropheusJ/fabric-example-mod"
+    "sources": "https://github.com/devOS-Sanity-Edition/shenanigans"
   },
   "license": "MIT",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/shenanigans/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.tropheusj.modid.ExampleMod"
+      "one.devos.nautical.shenanigans.Shenanigans"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "shenanigans.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
