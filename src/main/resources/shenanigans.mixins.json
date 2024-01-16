@@ -4,7 +4,8 @@
   "package": "one.devos.nautical.shenanigans.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "EntityDataSerializersMixin"
+    "EntityDataSerializersMixin",
+    "compat.led.BlockBehavior$BlockStateBaseMixin"
   ],
   "client": [
   ],
