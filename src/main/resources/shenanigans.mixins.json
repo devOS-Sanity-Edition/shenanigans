@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "EntityDataSerializersMixin",
-    "compat.led.BlockBehavior$BlockStateBaseMixin"
+    "compat.led.BlockBehavior$BlockStateBaseMixin",
+    "tweak.incubus.IncubusCoreMixin"
   ],
   "client": [
   ],
