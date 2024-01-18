@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "EntityDataSerializersMixin",
+    "compat.c2me.AsyncSerializationManager$ScopeMixin",
     "compat.led.BlockBehavior$BlockStateBaseMixin",
     "tweak.incubus.IncubusCoreMixin"
   ],
