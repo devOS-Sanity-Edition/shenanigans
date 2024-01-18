@@ -23,6 +23,7 @@ repositories {
 	maven { url = "https://maven.bai.lol" }
 	maven { url = "https://maven.terraformersmc.com/releases/" }
 	maven { url = "https://maven.shedaniel.me/" }
+	maven { url = "https://jitpack.io" }
 }
 
 dependencies {
@@ -44,6 +45,7 @@ dependencies {
 
 	// dependencies
 	modImplementation("org.quiltmc.quilted-fabric-api:quilted-fabric-api:$qfapi_version")
+	include(implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.1.1")))
 }
 
 tasks.register("buildOrPublish") {

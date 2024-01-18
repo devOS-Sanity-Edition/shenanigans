@@ -16,7 +16,7 @@ public class AsyncSerializationManager$ScopeMixin {
 					target = "Lorg/slf4j/Logger;warn(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V"
 			)
 	)
-	private void silence(Logger logger, String message, Object arg1, Object arg2) {
+	private void silenceC2me(Logger logger, String message, Object arg1, Object arg2) {
 		// shhhh.
 	}
 }
