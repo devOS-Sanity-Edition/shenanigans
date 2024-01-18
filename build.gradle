@@ -67,7 +67,7 @@ processResources {
 
 	properties.forEach((k, v) -> inputs.property(k, v))
 
-	filesMatching("fabric.mod.json") {
+	filesMatching("quilt.mod.json") {
 		expand properties
 	}
 }

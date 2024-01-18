@@ -5,7 +5,11 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "SynchedEntityDataMixin",
-    "ServerEntityMixin"
+    "ServerEntityMixin",
+    "EntityDataSerializersMixin",
+    "compat.c2me.AsyncSerializationManager$ScopeMixin",
+    "compat.led.BlockBehavior$BlockStateBaseMixin",
+    "tweak.incubus.IncubusCoreMixin"
   ],
   "client": [
   ],
