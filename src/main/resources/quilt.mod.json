@@ -18,7 +18,8 @@
     },
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
-      "init": "one.devos.nautical.shenanigans.Shenanigans"
+      "init": "one.devos.nautical.shenanigans.Shenanigans",
+      "client_init": "one.devos.nautical.shenanigans.ShenanigansClient"
     },
     "depends": [
       {
