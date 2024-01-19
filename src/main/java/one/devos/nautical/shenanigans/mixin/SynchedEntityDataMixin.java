@@ -23,7 +23,7 @@ import one.devos.nautical.shenanigans.injecteddata.InjectedEntityData;
 import one.devos.nautical.shenanigans.injecteddata.InjectedEntityDataAccessor;
 import one.devos.nautical.shenanigans.injecteddata.InjectedEntityDataHolder;
 
-@Mixin(SynchedEntityData.class)
+@Mixin(value = SynchedEntityData.class, priority = 300)  // inject before Canary
 public class SynchedEntityDataMixin implements InjectedEntityDataHolder {
 	@Unique
 	private static final Object2BooleanOpenHashMap<Class<?>> USE_INJECTED_ENTITY_DATA = new Object2BooleanOpenHashMap<>();
