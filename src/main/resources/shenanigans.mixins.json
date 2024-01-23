@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "EntityDataSerializersMixin",
+    "PacketDecoderMixin",
     "ServerEntityMixin",
     "SynchedEntityDataMixin",
     "compat.bm.RandomUtilMixin",
