@@ -43,7 +43,7 @@ public abstract class PacketDecoderMixin {
 	private boolean handleFragments(List<Object> out, Object packet, Operation<Boolean> original,
 									ChannelHandlerContext ctx, ByteBuf byteBuf, List<Object> out2) throws Exception {
 		Pair<ResourceLocation, FriendlyByteBuf> info = getCustomPayloadInfo(packet);
-		if (true) {
+		if (info == null) {
 			return original.call(out, packet);
 		}
 		ResourceLocation id = info.getFirst();
@@ -57,8 +57,8 @@ public abstract class PacketDecoderMixin {
 			if (combined != null) {
 				// when a packet has been recombined, feed it back into decoding
 				this.decode(ctx, combined, out2);
-				return false; // do not add the fragment to the output list
 			}
+			return false; // do not add the fragment to the output list
 		}
 		return original.call(out, packet);
 	}

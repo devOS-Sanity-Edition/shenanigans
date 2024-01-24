@@ -23,6 +23,7 @@ public class PacketMerger {
 		if (fragmentSets.containsKey(id)) {
 			Shenanigans.LOGGER.error("Received duplicate header for set " + id);
 		} else {
+			Shenanigans.LOGGER.info("Received split packet header {} ({} fragments)", id, fragments);
 			fragmentSets.put(id, FragmentSet.create(fragments));
 		}
 	}
@@ -34,6 +35,7 @@ public class PacketMerger {
 	public FriendlyByteBuf receiveFragment(FriendlyByteBuf buf) {
 		UUID id = buf.readUUID();
 		int index = buf.readVarInt();
+		Shenanigans.LOGGER.info("Received fragment {} for set {} ({} bytes)", index, id, buf.readableBytes());
 
 		FragmentSet set = fragmentSets.get(id);
 		if (set == null) {
@@ -43,6 +45,7 @@ public class PacketMerger {
 		} else if (set.isComplete()) {
 			// re-assemble fragments into a whole packet and send it to the handler
 			FriendlyByteBuf whole = set.combine();
+			Shenanigans.LOGGER.info("Received all fragments in set, recombined buffer contains {} bytes", whole.readableBytes());
 			// set is complete, we're done with it
 			set.release();
 			fragmentSets.remove(id);

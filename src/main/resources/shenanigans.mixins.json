@@ -14,6 +14,7 @@
     "packetsplit.ClientboundCustomPayloadPacketMixin",
     "packetsplit.ConnectionMixin",
     "packetsplit.PacketDecoderMixin",
+    "packetsplit.PacketEncoderMixin",
     "tweak.incubus.IncubusCoreMixin"
   ],
   "client": [

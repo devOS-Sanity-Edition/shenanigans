@@ -2,6 +2,7 @@ package one.devos.nautical.shenanigans.mixin.packetsplit;
 
 import io.netty.channel.ChannelPipeline;
 
+import one.devos.nautical.shenanigans.packetsplit.PacketEncoderExt;
 import one.devos.nautical.shenanigans.packetsplit.PacketSplitter;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,6 +18,10 @@ public class ConnectionMixin {
 	@Inject(method = "configureSerialization", at = @At("TAIL"))
 	private static void addSplitter(ChannelPipeline pipeline, PacketFlow flow, CallbackInfo ci) {
 		// for outbound events (sending a packet) netty events flow upwards from the bottom of the addLast chain
-		pipeline.addAfter("encoder", "shenanigans_splitter", new PacketSplitter(flow.getOpposite()));
+		PacketSplitter splitter = new PacketSplitter(flow.getOpposite());
+		pipeline.addAfter("encoder", "shenanigans_splitter", splitter);
+		// give the encoder the splitter for retrieving pre-written data
+		PacketEncoderExt encoder = (PacketEncoderExt) pipeline.get("encoder");
+		encoder.shenanigans$setSplitter(splitter);
 	}
 }
