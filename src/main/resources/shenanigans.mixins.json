@@ -5,13 +5,15 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "EntityDataSerializersMixin",
-    "PacketDecoderMixin",
     "ServerEntityMixin",
     "SynchedEntityDataMixin",
     "compat.bm.RandomUtilMixin",
     "compat.c2me.AsyncSerializationManager$ScopeMixin",
     "compat.c2me.ChunkSerializerMixin",
     "compat.led.BlockBehavior$BlockStateBaseMixin",
+    "packetsplit.ClientboundCustomPayloadPacketMixin",
+    "packetsplit.ConnectionMixin",
+    "packetsplit.PacketDecoderMixin",
     "tweak.incubus.IncubusCoreMixin"
   ],
   "client": [

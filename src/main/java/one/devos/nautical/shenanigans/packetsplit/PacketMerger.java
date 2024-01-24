@@ -2,8 +2,6 @@ package one.devos.nautical.shenanigans.packetsplit;
 
 import net.minecraft.network.FriendlyByteBuf;
 
-import net.minecraft.network.protocol.Packet;
-
 import one.devos.nautical.shenanigans.Shenanigans;
 
 import org.jetbrains.annotations.Nullable;
@@ -19,7 +17,14 @@ public class PacketMerger {
 	private final Map<UUID, FragmentSet> fragmentSets = new HashMap<>();
 
 	public void receiveHeader(FriendlyByteBuf buf) {
+		UUID id = buf.readUUID();
+		int fragments = buf.readVarInt();
 
+		if (fragmentSets.containsKey(id)) {
+			Shenanigans.LOGGER.error("Received duplicate header for set " + id);
+		} else {
+			fragmentSets.put(id, FragmentSet.create(fragments));
+		}
 	}
 
 	/**
@@ -42,10 +47,9 @@ public class PacketMerger {
 			set.release();
 			fragmentSets.remove(id);
 			return whole;
-		} else {
-			// successfully received the fragment and saved it for later
-			return null;
 		}
+
+		return null;
 	}
 
 	public record FragmentSet(List<FriendlyByteBuf> data) {

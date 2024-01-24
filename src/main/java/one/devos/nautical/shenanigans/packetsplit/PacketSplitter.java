@@ -28,14 +28,14 @@ public class PacketSplitter extends MessageToMessageEncoder<Packet<?>> {
 	}
 
 	@Override
-	protected void encode(ChannelHandlerContext ctx, Packet<?> packet, List<Object> out) throws Exception {
+	protected void encode(ChannelHandlerContext ctx, Packet<?> packet, List<Object> out) {
 		try {
 			// simulate serialization
 			FriendlyByteBuf buf = PacketByteBufs.create();
 			packet.write(buf);
 			int size = buf.writerIndex();
 
-			if (size <= PacketSplitting.MAX_SIZE) {
+			if (true) {
 				// safe size. just send it normally
 				out.add(packet);
 				return;
@@ -56,9 +56,11 @@ public class PacketSplitter extends MessageToMessageEncoder<Packet<?>> {
 				fragments.add(fragment);
 				i++;
 			}
-
-			out.add(this.createHeader(id, i)); // create header packet with info
-			out.addAll(fragments); // all is well. send the fragments
+			buf.release();
+			Packet<?> header = this.createHeader(id, i);
+			// all is well. send the fragments
+			out.add(header);
+			out.addAll(fragments);
 		} catch (Throwable t) {
 			// if anything goes wrong, just log it and pass it on.
 			Shenanigans.LOGGER.error("Error splitting packet [" + PacketSplitting.toString(packet) + ']', t);

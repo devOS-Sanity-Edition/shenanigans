@@ -62,5 +62,9 @@ public class ShenanigansClient implements ClientModInitializer {
 				}
 			});
 		});
+
+		ClientPlayNetworking.registerGlobalReceiver(Shenanigans.id("big_packet"), (client, handler, buf, responseSender) -> {
+			Shenanigans.LOGGER.info("Successfully received a really big packet");
+		});
 	}
 }

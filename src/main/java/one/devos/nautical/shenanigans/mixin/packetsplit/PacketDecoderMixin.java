@@ -1,19 +1,19 @@
-package one.devos.nautical.shenanigans.mixin;
-
-import com.llamalad7.mixinextras.injector.WrapWithCondition;
+package one.devos.nautical.shenanigans.mixin.packetsplit;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+
+import com.mojang.datafixers.util.Pair;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.PacketDecoder;
 
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundCustomPayloadPacket;
 
 import net.minecraft.network.protocol.game.ServerboundCustomPayloadPacket;
+import net.minecraft.resources.ResourceLocation;
 import one.devos.nautical.shenanigans.packetsplit.PacketMerger;
 import one.devos.nautical.shenanigans.packetsplit.PacketSplitting;
 
@@ -42,8 +42,17 @@ public abstract class PacketDecoderMixin {
 	)
 	private boolean handleFragments(List<Object> out, Object packet, Operation<Boolean> original,
 									ChannelHandlerContext ctx, ByteBuf byteBuf, List<Object> out2) throws Exception {
-		FriendlyByteBuf data = getData(packet);
-		if (data != null) {
+		Pair<ResourceLocation, FriendlyByteBuf> info = getCustomPayloadInfo(packet);
+		if (true) {
+			return original.call(out, packet);
+		}
+		ResourceLocation id = info.getFirst();
+		FriendlyByteBuf data = info.getSecond();
+
+		if (id.equals(PacketSplitting.HEADER)) {
+			merger.receiveHeader(data);
+			return false;
+		} else if (id.equals(PacketSplitting.FRAGMENT)) {
 			FriendlyByteBuf combined = merger.receiveFragment(data);
 			if (combined != null) {
 				// when a packet has been recombined, feed it back into decoding
@@ -56,11 +65,11 @@ public abstract class PacketDecoderMixin {
 
 	@Unique
 	@Nullable
-	private static FriendlyByteBuf getData(Object packet) {
-		if (packet instanceof ClientboundCustomPayloadPacket c && c.getIdentifier().equals(PacketSplitting.FRAGMENT)) {
-			return c.getData();
-		} else if (packet instanceof ServerboundCustomPayloadPacket s && s.getIdentifier().equals(PacketSplitting.FRAGMENT)) {
-			return s.getData();
+	private static Pair<ResourceLocation, FriendlyByteBuf> getCustomPayloadInfo(Object packet) {
+		if (packet instanceof ClientboundCustomPayloadPacket c) {
+			return Pair.of(c.getIdentifier(), c.getData());
+		} else if (packet instanceof ServerboundCustomPayloadPacket s) {
+			return Pair.of(s.getIdentifier(), s.getData());
 		}
 		return null;
 	}
