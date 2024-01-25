@@ -11,10 +11,11 @@
     "compat.c2me.AsyncSerializationManager$ScopeMixin",
     "compat.c2me.ChunkSerializerMixin",
     "compat.led.BlockBehavior$BlockStateBaseMixin",
-    "packetsplit.ClientboundCustomPayloadPacketMixin",
     "packetsplit.ConnectionMixin",
     "packetsplit.PacketDecoderMixin",
     "packetsplit.PacketEncoderMixin",
+    "packetsplit.unlimit.ClientboundCustomPayloadPacketMixin",
+    "packetsplit.unlimit.ServerboundCustomPayloadPacketMixin",
     "tweak.incubus.IncubusCoreMixin"
   ],
   "client": [

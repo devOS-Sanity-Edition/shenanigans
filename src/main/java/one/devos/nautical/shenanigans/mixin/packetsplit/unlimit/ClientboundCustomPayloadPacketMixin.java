@@ -1,4 +1,4 @@
-package one.devos.nautical.shenanigans.mixin.packetsplit;
+package one.devos.nautical.shenanigans.mixin.packetsplit.unlimit;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 
@@ -14,9 +14,10 @@ public class ClientboundCustomPayloadPacketMixin {
 			at = @At(
 					value = "CONSTANT",
 					args = "intValue=1048576"
-			)
+			),
+			require = 2
 	)
-	private int bigify(int limit) {
+	private int increaseMaxBytes(int limit) {
 		return Integer.MAX_VALUE;
 	}
 }
