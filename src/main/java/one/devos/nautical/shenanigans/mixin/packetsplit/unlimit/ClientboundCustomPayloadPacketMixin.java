@@ -10,7 +10,10 @@ import net.minecraft.network.protocol.game.ClientboundCustomPayloadPacket;
 @Mixin(ClientboundCustomPayloadPacket.class)
 public class ClientboundCustomPayloadPacketMixin {
 	@ModifyExpressionValue(
-			method = "<init>*",
+			method = {
+					"<init>(Lnet/minecraft/network/FriendlyByteBuf;)V",
+					"<init>(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/network/FriendlyByteBuf;)V"
+			},
 			at = @At(
 					value = "CONSTANT",
 					args = "intValue=1048576"
