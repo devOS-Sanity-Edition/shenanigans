@@ -4,6 +4,7 @@
   "package": "one.devos.nautical.shenanigans.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ClientboundCustomPayloadPacketMixin",
     "EntityDataSerializersMixin",
     "ServerEntityMixin",
     "SynchedEntityDataMixin",
@@ -11,11 +12,6 @@
     "compat.c2me.AsyncSerializationManager$ScopeMixin",
     "compat.c2me.ChunkSerializerMixin",
     "compat.led.BlockBehavior$BlockStateBaseMixin",
-    "packetsplit.ConnectionMixin",
-    "packetsplit.PacketDecoderMixin",
-    "packetsplit.PacketEncoderMixin",
-    "packetsplit.unlimit.ClientboundCustomPayloadPacketMixin",
-    "packetsplit.unlimit.ServerboundCustomPayloadPacketMixin",
     "tweak.incubus.IncubusCoreMixin"
   ],
   "client": [
