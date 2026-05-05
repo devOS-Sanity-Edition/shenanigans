@@ -2,17 +2,8 @@
   "required": true,
   "minVersion": "0.8",
   "package": "one.devos.nautical.shenanigans.mixin",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ClientboundCustomPayloadPacketMixin",
-    "EntityDataSerializersMixin",
-    "ServerEntityMixin",
-    "SynchedEntityDataMixin",
-    "compat.bm.RandomUtilMixin",
-    "compat.c2me.AsyncSerializationManager$ScopeMixin",
-    "compat.c2me.ChunkSerializerMixin",
-    "compat.led.BlockBehavior$BlockStateBaseMixin",
-    "tweak.incubus.IncubusCoreMixin"
   ],
   "client": [
   ],

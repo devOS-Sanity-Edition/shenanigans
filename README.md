@@ -1,8 +1,7 @@
 # Shenanigans
 Assorted fixes, patches, and tweaks for the DevOS Minecraft seasons.
 
-### Features
-- hack fix for mods adding tracked data to other entities
-- compat patch between Adorn and LED
-- silence log spam from Incubus Core
-- compat patch between C2ME and Supplementaries
+### Layout
+A new branch is created for each modpack this gets used in.
+
+Each branch may as well be a unique mod, as each pack is different and needs different tweaks.
