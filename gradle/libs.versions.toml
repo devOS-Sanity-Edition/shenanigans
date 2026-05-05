@@ -4,5 +4,41 @@ minecraft = "1.21.1"
 neoforge = "21.1.219"
 parchment = "2024.11.17"
 
+create = "6.0.10-280"
+ponder = "1.0.82+mc1.21.1"
+registrate = "MC1.21-1.3.0+67"
+flywheel = "1.0.6"
+
+sable = "1.2.2"
+sable-companion = "1.6.0"
+simulated-suite = "1.2.1"
+veil = "3.4.0"
+
+functional-storage = "1.21-1.5.5"
+titanium = "1.21-4.0.43"
+
+[libraries]
+create = { module = "com.simibubi.create:create-1.21.1", version.ref = "create" }
+ponder = { module = "net.createmod.ponder:ponder-neoforge", version.ref = "ponder" }
+registrate = { module = "com.tterrag.registrate:Registrate", version.ref = "registrate" }
+
+flywheel-api = { module = "dev.engine-room.flywheel:flywheel-neoforge-api-1.21.1", version.ref = "flywheel" }
+flywheel = { module = "dev.engine-room.flywheel:flywheel-neoforge-1.21.1", version.ref = "flywheel" }
+
+sable = { module = "dev.ryanhcode.sable:sable-neoforge-1.21.1", version.ref = "sable" }
+sable-companion = { module = "dev.ryanhcode.sable-companion:sable-companion-common-1.21.1", version.ref = "sable-companion" }
+veil = { module = "foundry.veil:veil-neoforge-1.21.1", version.ref = "veil" }
+simulated = { module = "dev.simulated_team.simulated:simulated-neoforge-1.21.1", version.ref = "simulated-suite" }
+aeronautics = { module = "dev.eriksonn.aeronautics:aeronautics-neoforge-1.21.1", version.ref = "simulated-suite" }
+offroad = { module = "dev.ryanhcode.offroad:offroad-neoforge-1.21.1", version.ref = "simulated-suite" }
+
+functional-storage = { module = "maven.modrinth:functional-storage", version.ref = "functional-storage" }
+titanium = { module = "maven.modrinth:titanium", version.ref = "titanium" }
+
+[bundles]
+simulated-suite = [ "sable", "simulated", "aeronautics", "offroad" ]
+sable-libs = [ "sable-companion", "veil" ]
+functional-storage = [ "functional-storage", "titanium" ]
+
 [plugins]
 mdg = { id = "net.neoforged.moddev", version.ref = "mdg" }

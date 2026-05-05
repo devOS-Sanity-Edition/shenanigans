@@ -10,6 +10,57 @@ version = providers.environmentVariable("GITHUB_RUN_NUMBER")
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
+repositories {
+    exclusiveContent {
+        forRepositories(maven("https://maven.createmod.net")).filter {
+            includeGroup("com.simibubi.create")
+            includeGroup("dev.engine-room.flywheel")
+            includeGroup("net.createmod.ponder")
+        }
+
+        forRepositories(maven("https://maven.ithundxr.dev/snapshots")).filter {
+            includeModule("com.tterrag.registrate", "Registrate")
+        }
+
+        forRepositories(maven("https://maven.ryanhcode.dev/releases")).filter {
+            includeGroup("dev.ryanhcode.sable-companion")
+            includeGroup("dev.ryanhcode.sable")
+            includeGroup("dev.ryanhcode.offroad")
+            includeGroup("dev.simulated_team.simulated")
+            includeGroup("dev.eriksonn.aeronautics")
+        }
+
+        forRepositories(maven("https://maven.blamejared.com")).filter {
+            includeGroup("foundry.veil")
+            includeModule("gg.moonflower", "molang-compiler")
+            includeModule("io.github.ocelot", "glsl-processor")
+        }
+
+        forRepositories(maven("https://api.modrinth.com/maven")).filter {
+            includeGroup("maven.modrinth")
+        }
+    }
+}
+
+dependencies {
+    implementation(libs.create) {
+        isTransitive = false
+    }
+
+    implementation(libs.ponder)
+    implementation(libs.registrate)
+
+    compileOnly(libs.flywheel.api)
+    runtimeOnly(libs.flywheel)
+
+    compileOnly(libs.bundles.sable.libs)
+    implementation(libs.bundles.simulated.suite) {
+        isTransitive = false
+    }
+
+    implementation(libs.bundles.functional.storage)
+}
+
 neoForge {
     version = libs.versions.neoforge.get()
 
@@ -23,11 +74,11 @@ neoForge {
     }
 
     runs {
-        create("client") {
+        register("client") {
             client()
         }
 
-        create("server") {
+        register("server") {
             server()
             gameDirectory = file("run/server")
         }
