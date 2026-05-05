@@ -34,7 +34,7 @@ public class LevelRendererMixin {
 			)
 	)
 	private VoxelShape useDrawerSubShapes(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext ctx, Operation<VoxelShape> original) {
-		if ( blockGetter instanceof Level level && state.getBlock() instanceof BasicBlock basicBlock && basicBlock.hasIndividualRenderVoxelShape()) {
+		if (blockGetter instanceof Level level && state.getBlock() instanceof BasicBlock basicBlock && basicBlock.hasIndividualRenderVoxelShape()) {
 			Entity entity = ctx instanceof EntityCollisionContext entityCtx ? entityCtx.getEntity() : null;
 			if (entity instanceof LivingEntity living) {
 				Minecraft mc = Minecraft.getInstance();
