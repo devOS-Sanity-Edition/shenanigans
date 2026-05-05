@@ -4,8 +4,11 @@
   "package": "one.devos.nautical.shenanigans.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "RayTraceUtilsMixin",
+    "TitaniumClientMixin"
   ],
   "client": [
+    "LevelRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
